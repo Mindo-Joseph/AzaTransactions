@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_30_143252) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_30_164744) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "transactions", force: :cascade do |t|
     t.integer "customerID"
-    t.decimal "inputAmount"
+    t.float "inputAmount"
     t.string "inputCurrency"
-    t.decimal "outputAmount"
+    t.float "outputAmount"
     t.string "outputCurrency"
     t.datetime "date"
     t.datetime "created_at", null: false
