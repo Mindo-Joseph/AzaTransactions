@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+
   def index
     @transactions = Transaction.all
     render json: @transactions
@@ -9,10 +10,10 @@ class TransactionsController < ApplicationController
   end
   def create
     @transaction = Transaction.create(transaction_params)
-    if @transaction.save!
-      render json: @transaction
+    if @transaction.valid?
+      render json: @transaction, status: :created
     else
-      render error: {error: 'Unable to create transaction'}, status: 400
+      render error: {error: 'Unable to create transaction'}, status: :unprocessable_entity
     end
   end
   private
