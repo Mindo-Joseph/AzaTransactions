@@ -16,6 +16,12 @@ class TransactionsController < ApplicationController
       render error: {error: 'Unable to create transaction'}, status: :unprocessable_entity
     end
   end
+  def update
+    @transaction = Transaction.find(params[:id])
+    @transaction.update(transaction_params)
+    render json: @transaction
+
+  end
   private
   def transaction_params
     params.require(:transaction).permit(:customerID, :inputAmount, :inputCurrency, :outputAmount, :outputCurrency, :date)
